@@ -16,3 +16,7 @@ const Camper = props => {
  <div><h1>My First Camp!</h1><p>{props.name}</p></div>
   );
   }
+
+  Camper.defaultProps = {
+  name: "dave"
+};
