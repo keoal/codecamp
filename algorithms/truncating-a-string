@@ -1,0 +1,13 @@
+//Truncate the string if it is longer than the maximum string length
+//If the length of the string is less than or equal to the given number, just return the string without truncating it.
+//Otherwise, truncate the string. Meaning keep the beginning of the string up until the given number and discard the rest.
+//Add “…” to the end of the truncated string and return it.
+
+function truncateString(str, num) {
+  if (str.length <= num){
+  return str;
+} 
+  return str.slice(0, num) + '...'
+}
+
+truncateString("A-tisket a-tasket A green and yellow basket", 8);
