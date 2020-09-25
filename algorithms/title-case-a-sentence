@@ -1,0 +1,26 @@
+//Turn all the letters in str to lower case letters.
+//Split the lower case str into an array, with each word being a separate element in the array.
+//Capitalize the first letter of each element in the array.
+//Join each element of the array into one string, separating each word by a whitespace.
+//Return the title cased string.
+
+function titleCase(str) {
+  //Change string to lower case string
+  let lowerCaseString = str.toLowerCase()
+  console.log(lowerCaseString)
+  //split string into an array
+  let stringSplit = lowerCaseString.split(" ");
+  console.log(stringSplit)
+  //map stringsplit so that first letter of every word is capitalised
+  let titleCaseArray = stringSplit.map((word) => {
+    return word[0].toUpperCase() + word.slice(1)
+    })
+    console.log(titleCaseArray)
+  //rejoin array back into string   
+  let titleCaseSentence = titleCaseArray.join(' ')
+  console.log(titleCaseSentence)
+  return titleCaseSentence
+  
+}
+
+titleCase("I'm a little tea pot");
