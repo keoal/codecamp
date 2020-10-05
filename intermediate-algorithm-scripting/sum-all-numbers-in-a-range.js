@@ -9,7 +9,7 @@ function sumAll(arr) {
   for (let i = arr[0]; i <= arr[1]; i++) {
     fullArr.push(i);
 }
-//sum up all the numbers in our fullArr array.
+//sum up all the numbers in our fullArr array using .reduce() with our reducer function.
 sum = fullArr.reduce(reducer);
 return sum;
 }
