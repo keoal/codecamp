@@ -1,0 +1,41 @@
+//Create a function that generates the numbers from 1 to num and check if they are prime along the way.
+//Declare the variables that will be needed.
+//Start with 2, if it has not been marked and added to the sieve array then it is a prime and we add it to the prime array.
+//Add the others to the sieve array.
+//Return the primes
+//Loop through the returned array and add all the elements to then return the final value.
+
+function sumPrimes(num) {
+  var res = 0;
+
+  // Function to get the primes up to max in an array
+  function getPrimes(max) {
+    var sieve = [];
+    var i;
+    var j;
+    var primes = [];
+    for (i = 2; i <= max; ++i) {
+      if (!sieve[i]) {
+        // i has not been marked -- it is prime
+        primes.push(i);
+        for (j = i << 1; j <= max; j += i) {
+          sieve[j] = true;
+        }
+      }
+    }
+console.log(primes);
+    return primes;
+  }
+
+  // Add the primes
+  var primes = getPrimes(num);
+  for (var p = 0; p < primes.length; p++) {
+    res += primes[p];
+  }
+console.log(res);
+  return res;
+}
+
+// test here
+
+sumPrimes(10);
