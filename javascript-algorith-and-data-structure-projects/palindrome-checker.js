@@ -16,13 +16,15 @@ console.log("rWord String: ", rWordStr);
 console.log("str: ", str);
   //if word == rWord
   //return true;
-  if(rWord === str){
+  if(rWordStr === str){
     console.log("Yay! its a palindrome!!!")
+    return true;
   } else {
     console.log("Boo! Not a palindrome!")
+    return false;
   }
 }
 
 
 
-palindrome("eye");
+palindrome("racecar");
