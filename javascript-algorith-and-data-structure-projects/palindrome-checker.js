@@ -9,12 +9,20 @@ function palindrome(str) {
   // word[i].pop;
    rWord.push(word[i])
  }
-  
 console.log(rWord);
+
+var rWordStr = rWord.join("");
+console.log("rWord String: ", rWordStr);
+console.log("str: ", str);
   //if word == rWord
   //return true;
+  if(rWord === str){
+    console.log("Yay! its a palindrome!!!")
+  } else {
+    console.log("Boo! Not a palindrome!")
+  }
 }
 
 
 
-palindrome("racecar");
+palindrome("eye");
