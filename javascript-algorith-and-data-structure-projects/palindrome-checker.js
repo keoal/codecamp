@@ -1,14 +1,16 @@
 function palindrome(str) {
   var word = [...str];
-  //str.replace(/[^a-zA-Z ]/g,);
-  console.log(word.pop());
-  console.log(word.length);
- var i;
- for (var i = word.length -1; i >= 0; i--){
-   rWord.push(word.pop)
- }
   var rWord = [];
-console.log(rWord.push(word.pop()))
+  //str.replace(/[^a-zA-Z ]/g,);
+  //console.log(word.pop());
+  //console.log(word.length);
+ for (var i = word.length -1; i >= 0; i--){
+   console.log("for", word[i]);
+  // word[i].pop;
+   rWord.push(word[i])
+ }
+  
+console.log(rWord);
   //if word == rWord
   //return true;
 }
