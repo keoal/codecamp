@@ -1,5 +1,6 @@
 function palindrome(str) {
-  var word = [...str];
+  var cleansed = str.toLowerCase().replace(/[\W_ ]/g, "");
+  var word = [...cleansed];
   var rWord = [];
   //str.replace(/[^a-zA-Z ]/g,);
   //console.log(word.pop());
@@ -12,11 +13,12 @@ function palindrome(str) {
 console.log(rWord);
 
 var rWordStr = rWord.join("");
+//var cleansed = rWordStr.replace(/[^a-zA-Z ]/g, "");
 console.log("rWord String: ", rWordStr);
-console.log("str: ", str);
+console.log("str: ", cleansed);
   //if word == rWord
   //return true;
-  if(rWordStr === str){
+  if(rWordStr === cleansed){
     console.log("Yay! its a palindrome!!!")
     return true;
   } else {
@@ -27,4 +29,4 @@ console.log("str: ", str);
 
 
 
-palindrome("racecar");
+palindrome("ra ce%car");
