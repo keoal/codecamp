@@ -6,7 +6,12 @@ function checkCashRegister(price, cash, cid) {
     change: []
   }
   
+  //if cid < change || cannot return exact change: status "INSUFFICIENT_FUNDS"
+  //else if cid == change
+
+
   //var change;
+  console.log(output);
   return output;
 }
 
