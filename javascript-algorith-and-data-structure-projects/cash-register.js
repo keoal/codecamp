@@ -75,6 +75,7 @@ function checkCashRegister(price, cash, cid) {
       cid = cid.reverse();
       for (let elem of cid) {
         let temp = [elem[0], 0];
+        //and then a while loop similar to the Roman Numeral Index solution
          while (changeAmt >= denomination[elem[0]] && elem[1] > 0) {
            temp[1] += denomination[elem[0]];
            elem[1] -= denomination[elem[0]];
