@@ -108,13 +108,10 @@ function checkCashRegister(price, cash, cid) {
       }
   }
   if (changeAmt > 0) {
-      output.status: "INSUFFICIENT_FUNDSzzz"; 
-      output.change: [];
-  }
-  return { 
-    output.status: "OPEN", 
-    output.change: changeOut
-    };
+      output.status = "INSUFFICIENT_FUNDS";
+      output.change = [];
+      return output;
+  } return {status: "OPEN", change: changeOut};
 }
 
 
