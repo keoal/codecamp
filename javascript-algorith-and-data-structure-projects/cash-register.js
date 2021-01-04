@@ -1,24 +1,20 @@
 //we need to define the value of each denomination in the till
-var denomination = [
-      {name: 'ONE HUNDRED', value: 100.00},
-      {name: 'TWENTY', value: 20.00},
-      {name: 'TEN', value: 10.00},
-      {name: 'FIVE', value: 5.00},
-      {name: 'ONE', value: 1.00},
-      {name: 'QUARTER', value: 0.25},
-      {name: 'DIME', value: 0.10},
-      {name: 'NICKEL', value: 0.05},
-      {name: 'PENNY', value: 0.01}
-      ];
-
-      console.log("denom-test", denomination[1].name);
-
-var denom = ['PENNY', 'NICKEL', 'DIME', 'QUARTER', 'ONE', 'FIVE', 'TEN', 'TWENTY', 'ONE HUNDRED'];
-
-var value = [0.01, 0.05, 0.10, 0.25, 1.00, 5.00, 10.00, 20.00, 100.00];
 
 function checkCashRegister(price, cash, cid) {
-  //create object for return with status & change keys
+  //First we need to define the value of each denomination in the till
+    const denomination = {
+    "PENNY": .01,
+    "NICKEL": .05,
+    "DIME": .10,
+    "QUARTER": .25,
+    "ONE": 1.00,
+    "FIVE": 5.00,
+    "TEN": 10.00,
+    "TWENTY": 20.00,
+    "ONE HUNDRED": 100.00
+  }
+
+  //Then we need to create the output object for return with status & change keys
   let output = {
     status: "",
     change: []
@@ -26,9 +22,12 @@ function checkCashRegister(price, cash, cid) {
   
   //get change due first by subtracting price from cash
   let changeAmt = cash - price;
+  //and also create a new array for the change out at the end
   const changeOut = [];
-  console.log("price ", price);
-  console.log("change = ", changeAmt);
+  
+  //console.log("price ", price);
+  //console.log("change = ", changeAmt);
+  //console.log("changeOut", changeOut);
   //console.log("cash in drawer ", cid);
 
   //We need to get the sum of the CID to find out how much money is in the drawer - this will be the sum of the second index in the array.
@@ -47,50 +46,30 @@ function checkCashRegister(price, cash, cid) {
 
   var cidTotal = cidSum.toFixed(2);
    //this is the total amount of cash in the drawer 
-    console.log("sum of cash in drawer", cidTotal);
-
-  //let arr = cid.map(x => x[1]);
-  //let arr2 = cid.map(x => x[0]);
-  //console.log(arr);
-  //then get the sum of the mapped numbers
-  /*
-  var cidSum = cid.reduce(
-    function(a, b){
-        a.total += b[1]; // a.total = a.total + b[1]
-        a[b[0]] = b[1];
-        //return a + b;
-        return a;
-    }, 
-    { total: 0}
-    );
-    */
-    //console.log("total", cidSum);
-    //var total = cidSum + cid
-   //this is the total amount of cash in the drawer 
-    //console.log("sum of cash in drawer", total);
-    //console.log("sum of cash in drawer", cidSum);
+    //console.log("sum of cash in drawer", cidTotal);
 
 
   //We need to loop through the denomination array and update the change with the coins that are available in the till up to the maximum value and store in a variable for change.
 
- //we need to check the amount of change vs the currency in the till and return the right change. 
+  
 
-//if cid < change || cannot return exact change: status "INSUFFICIENT_FUNDS"
+  //if cid < change || cannot return exact change: status "INSUFFICIENT_FUNDS"
   //else if cid == change: status="CLOSED"
   //else status: Open 
-
+//we need to check the amount of change vs the currency in the till and return the right change.
 //we need to check the status of the till.
-  //exact change
+  //Status for exact change
   if (cidSum === changeAmt){
     output.status = "CLOSED";
     output.change = cid;
-    console.log("output", output);
+    //console.log("output", output);
     return output;}
-  //insufficient funds
-  else if (cidSum.toFixed(2) < changeAmt){
+  //Status for insufficient funds
+  else if (cidSum < changeAmt){
     output.status = "INSUFFICIENT_FUNDS";
-    console.log("output", output);
+    //console.log("output", output);
     return output;
+    //Otherwise loop through cid
   } else {
       //reverse cid array;
       cid = cid.reverse();
@@ -101,17 +80,24 @@ function checkCashRegister(price, cash, cid) {
            elem[1] -= denomination[elem[0]];
            changeAmt -= denomination[elem[0]];
            changeAmt = changeAmt.toFixed(2);
-  } 
-  if (temp[1] > 0) {
-        changeOut.push(temp);
-        }
+            } 
+            if (temp[1] > 0) {
+                  changeOut.push(temp);
+                  }
       }
   }
+  //Status if changeAmt is greater than 0
   if (changeAmt > 0) {
       output.status = "INSUFFICIENT_FUNDS";
       output.change = [];
       return output;
-  } return {status: "OPEN", change: changeOut};
+  //Otherwise open the till and give out the correct change.
+  } else {
+      output.status = "OPEN"; 
+      output.change = changeOut;
+      console.log("output", output);
+      return output;
+    }
 }
 
 
