@@ -44,7 +44,7 @@ function checkCashRegister(price, cash, cid) {
         return (a + b);
     }, 0);
 
-  var cidTotal = cidSum.toFixed(2);
+  //var cidTotal = cidSum.toFixed(2);
    //this is the total amount of cash in the drawer 
     //console.log("sum of cash in drawer", cidTotal);
 
