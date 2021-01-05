@@ -3,14 +3,22 @@ function convertToRoman(num) {
 
  let decimal = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
 
- //create new string for output
+ //create new empty string for output
  var romanNumeral = "";
- // for loop to iterate through decimal array until the value of the current index fits into num
- for(var index = 0; index < decimal.length; index++){
-     //and then a while loop to add the index of roman to roman numeral while the index of decimal is less than or equal to num
-     while (decimal[index] <= num){
-         romanNumeral += roman[index]; //x=x+Y
-         num -= decimal[index];
+
+ // Use a for loop to iterate through the decimal array while the item is less than the length of the array
+ for(var item = 0; item < decimal.length; item++){
+     //console.log(item);
+     console.log(decimal[item]);
+     //While the amount of the decimal item is less than the number
+     while (decimal[item] <= num){
+         
+         //Add the equivalent item from the roman array to the empty string
+         romanNumeral = romanNumeral + roman[item];
+         //romanNumeral += roman[item];
+         //Take the amount from the decimal item away from the number until there is nothing left to avoid an infinite loop
+         num = num - decimal[item];
+         //num -= decimal[item];
      }
  }
 
